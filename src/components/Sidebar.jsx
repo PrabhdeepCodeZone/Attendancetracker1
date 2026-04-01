@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import {
     LayoutDashboard, Users, CalendarCheck, ClipboardList,
-    DollarSign, LogOut, Menu, X, ChevronRight
+    DollarSign, LogOut, Menu, X, ChevronRight, FileCheck
 } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 
@@ -12,6 +12,7 @@ const adminLinks = [
     { to: '/admin/attendance/mark', label: 'Mark Attendance', icon: CalendarCheck },
     { to: '/admin/attendance/records', label: 'Attendance Records', icon: ClipboardList },
     { to: '/admin/salary', label: 'Salary Slips', icon: DollarSign },
+    { to: '/admin/leave-requests', label: 'Leave Requests', icon: FileCheck },
 ]
 
 const employeeLinks = [
@@ -19,6 +20,7 @@ const employeeLinks = [
     { to: '/employee/attendance', label: 'My Attendance', icon: CalendarCheck },
     { to: '/employee/profile', label: 'My Profile', icon: Users },
     { to: '/employee/salary', label: 'My Salary Slip', icon: DollarSign },
+    { to: '/employee/requests', label: 'My Requests', icon: FileCheck },
 ]
 
 export default function Sidebar({ role }) {

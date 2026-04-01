@@ -83,12 +83,24 @@ export function useEmployees() {
         try {
             const { data } = await supabase.from('employees').select('user_id').eq('id', id).single()
 
-            const { error: empErr } = await supabase.from('employees').delete().eq('id', id)
-            if (empErr) throw empErr
+            const { data: { session }, error: sessionError } = await supabase.auth.refreshSession()
+            if (sessionError || !session) throw new Error('No active session.')
 
-            if (data?.user_id) {
-                await supabase.from('users').delete().eq('id', data.user_id)
-            }
+            const response = await fetch(
+                `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/delete-employee`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${session.access_token}`,
+                        'apikey': import.meta.env.VITE_SUPABASE_ANON_KEY
+                    },
+                    body: JSON.stringify({ employee_id: id, user_id: data?.user_id })
+                }
+            )
+
+            const result = await response.json()
+            if (!response.ok) throw new Error(result.error || result.message || 'Failed to delete employee')
 
             setEmployees(prev => prev.filter(e => e.id !== id))
         } catch (err) {

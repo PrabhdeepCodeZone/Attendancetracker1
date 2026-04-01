@@ -13,6 +13,8 @@ import EmployeeDashboard from './pages/employee/Dashboard'
 import MyAttendance from './pages/employee/MyAttendance'
 import Profile from './pages/employee/Profile'
 import MySalarySlip from './pages/employee/MySalarySlip'
+import MyRequests from './pages/employee/MyRequests'
+import LeaveRequests from './pages/admin/LeaveRequests'
 
 export default function App() {
   return (
@@ -44,6 +46,10 @@ export default function App() {
             path="/admin/salary"
             element={<ProtectedRoute requiredRole="admin"><SalarySlips /></ProtectedRoute>}
           />
+          <Route
+            path="/admin/leave-requests"
+            element={<ProtectedRoute requiredRole="admin"><LeaveRequests /></ProtectedRoute>}
+          />
 
           {/* Employee routes */}
           <Route
@@ -61,6 +67,10 @@ export default function App() {
           <Route
             path="/employee/salary"
             element={<ProtectedRoute requiredRole="employee"><MySalarySlip /></ProtectedRoute>}
+          />
+          <Route
+            path="/employee/requests"
+            element={<ProtectedRoute requiredRole="employee"><MyRequests /></ProtectedRoute>}
           />
 
           {/* Catch-all */}

@@ -41,7 +41,8 @@ export default function AttendanceRecords() {
             try {
                 const { month, year, employeeId } = filters
                 const startDate = `${year}-${String(month).padStart(2, '0')}-01`
-                const endDate = `${year}-${String(month).padStart(2, '0')}-31`
+                const endDay = new Date(year, month, 0).getDate()
+                const endDate = `${year}-${String(month).padStart(2, '0')}-${endDay}`
 
                 let query = supabase
                     .from('attendance')

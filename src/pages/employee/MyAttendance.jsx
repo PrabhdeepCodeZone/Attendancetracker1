@@ -26,7 +26,8 @@ export default function MyAttendance() {
             setLoading(true)
             try {
                 const startDate = `${year}-${String(month).padStart(2, '0')}-01`
-                const endDate = `${year}-${String(month).padStart(2, '0')}-31`
+                const endDay = new Date(year, month, 0).getDate()
+                const endDate = `${year}-${String(month).padStart(2, '0')}-${endDay}`
                 const { data, error } = await supabase
                     .from('attendance')
                     .select('*')

@@ -82,7 +82,8 @@ export default function SalarySlips() {
         try {
             const workingDays = customWorkingDays > 0 ? customWorkingDays : getWorkingDays(autoYear, autoMonth)
             const startDate = `${autoYear}-${String(autoMonth).padStart(2, '0')}-01`
-            const endDate   = `${autoYear}-${String(autoMonth).padStart(2, '0')}-31`
+            const endDay = new Date(autoYear, autoMonth, 0).getDate()
+            const endDate   = `${autoYear}-${String(autoMonth).padStart(2, '0')}-${endDay}`
 
             const { data: attData, error: attErr } = await supabase
                 .from('attendance')
@@ -180,7 +181,8 @@ export default function SalarySlips() {
         try {
             const employee = employees.find(e => e.id === slip.employee_id) || slip.employees || {}
             const startDate = `${slip.year}-${String(slip.month).padStart(2, '0')}-01`
-            const endDate   = `${slip.year}-${String(slip.month).padStart(2, '0')}-31`
+            const endDay = new Date(slip.year, slip.month, 0).getDate()
+            const endDate   = `${slip.year}-${String(slip.month).padStart(2, '0')}-${endDay}`
             const { data: attData } = await supabase
                 .from('attendance')
                 .select('status')
