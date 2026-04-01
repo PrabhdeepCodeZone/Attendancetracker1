@@ -81,8 +81,13 @@ export function AuthProvider({ children }) {
     }, [fetchUserRole])
 
     const signIn = async (email, password) => {
+        console.log('[AuthContext] Attempting to sign in with email:', email)
         const { data, error } = await supabase.auth.signInWithPassword({ email, password })
-        if (error) throw error
+        console.log('[AuthContext] Supabase sign in response:', { data, error })
+        if (error) {
+            console.error('[AuthContext] Sign in error:', error, error.message, error.status)
+            throw error
+        }
         return data
     }
 
