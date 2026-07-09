@@ -51,7 +51,7 @@ export default function Login() {
                     <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-xl border border-white/20">
                         <CalendarCheck size={32} className="text-white" />
                     </div>
-                    <h1 className="text-3xl font-bold text-white">AttendanceIQ</h1>
+                    <h1 className="text-3xl font-bold text-white">CI/CD Learning 🚀</h1>
                     <p className="text-indigo-200 mt-1 text-sm">Sign in to your account</p>
                 </div>
 
