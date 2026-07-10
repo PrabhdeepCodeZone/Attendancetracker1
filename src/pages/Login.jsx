@@ -1,7 +1,7 @@
     import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Eye, EyeOff, CalendarCheck, Loader2 } from 'lucide-react'
-import { useAuth } from '../context/AuthContext'
+import { useAuth } from '../hooks/useAuth'
 
 export default function Login() {
     const [email, setEmail] = useState('')

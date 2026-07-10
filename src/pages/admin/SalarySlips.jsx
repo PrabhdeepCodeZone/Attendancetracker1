@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react'
 import { FileText, Download, Loader2, DollarSign, Zap, RefreshCw, Search, X, Eye, Trash2 } from 'lucide-react'
 import Sidebar from '../../components/Sidebar'
 import Navbar from '../../components/Navbar'
-import { toast } from '../../components/Toast'
+import { toast } from '../../lib/toast'
 import { generateSalarySlipPDF, getSalarySlipPDFUrl } from '../../components/SalarySlipPDF'
 import { useSalarySlips, getWorkingDays } from '../../hooks/useSalarySlips'
-import { useAuth } from '../../context/AuthContext'
+import { useAuth } from '../../hooks/useAuth'
 import { supabase } from '../../lib/supabaseClient'
 
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']

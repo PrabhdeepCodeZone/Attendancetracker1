@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { CheckCircle, XCircle, AlertCircle, X } from 'lucide-react'
+import { setToastFn, clearToastFn } from '../lib/toast'
 
 const icons = {
     success: <CheckCircle size={18} className="text-green-500" />,
@@ -30,8 +31,6 @@ function ToastItem({ id, type, message, onRemove }) {
     )
 }
 
-let toastFn = null
-
 export function ToastContainer() {
     const [toasts, setToasts] = useState([])
 
@@ -45,8 +44,8 @@ export function ToastContainer() {
     }
 
     useEffect(() => {
-        toastFn = addToast
-        return () => { toastFn = null }
+        setToastFn(addToast)
+        return () => clearToastFn()
     }, [])
 
     return (
@@ -56,10 +55,4 @@ export function ToastContainer() {
             ))}
         </div>
     )
-}
-
-export const toast = {
-    success: (msg) => toastFn?.(msg, 'success'),
-    error: (msg) => toastFn?.(msg, 'error'),
-    info: (msg) => toastFn?.(msg, 'info'),
 }

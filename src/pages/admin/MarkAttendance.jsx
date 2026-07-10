@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import { CalendarCheck, Loader2 } from 'lucide-react'
 import Sidebar from '../../components/Sidebar'
 import Navbar from '../../components/Navbar'
-import { toast } from '../../components/Toast'
-import { useAuth } from '../../context/AuthContext'
+import { toast } from '../../lib/toast'
+import { useAuth } from '../../hooks/useAuth'
 import { supabase } from '../../lib/supabaseClient'
 
 const STATUS_OPTIONS = ['present', 'absent', 'half-day']

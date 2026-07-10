@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react'
 import { Download, Filter, ClipboardList } from 'lucide-react'
 import Sidebar from '../../components/Sidebar'
 import Navbar from '../../components/Navbar'
-import { useAuth } from '../../context/AuthContext'
+import { useAuth } from '../../hooks/useAuth'
 import { supabase } from '../../lib/supabaseClient'
 
 const STATUS_BADGE = {

@@ -2,8 +2,8 @@ import { useState, useMemo } from 'react'
 import { Pencil, Save, Loader2, User, Upload, FileText, Eye, X } from 'lucide-react'
 import Sidebar from '../../components/Sidebar'
 import Navbar from '../../components/Navbar'
-import { toast } from '../../components/Toast'
-import { useAuth } from '../../context/AuthContext'
+import { toast } from '../../lib/toast'
+import { useAuth } from '../../hooks/useAuth'
 import { supabase } from '../../lib/supabaseClient'
 
 const INFO_FIELDS = [
@@ -71,7 +71,7 @@ function DocumentUpload({ label, description, urlKey, currentUrl, userId, employ
                 .createSignedUrl(currentUrl, 60)
             if (error) throw error
             setPreviewUrl(data.signedUrl)
-        } catch (err) {
+        } catch {
             toast.error('Could not open document')
         }
     }

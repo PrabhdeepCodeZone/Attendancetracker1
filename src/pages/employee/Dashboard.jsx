@@ -5,7 +5,7 @@ import Navbar from '../../components/Navbar'
 import StatCard from '../../components/StatCard'
 import AttendanceCalendar from '../../components/AttendanceCalendar'
 import { CardSkeleton } from '../../components/LoadingSkeleton'
-import { useAuth } from '../../context/AuthContext'
+import { useAuth } from '../../hooks/useAuth'
 import { supabase } from '../../lib/supabaseClient'
 
 const STATUS_BADGE = {
@@ -15,7 +15,7 @@ const STATUS_BADGE = {
 }
 
 export default function EmployeeDashboard() {
-    const { user, employeeProfile } = useAuth()
+    const { employeeProfile } = useAuth()
     const [stats, setStats] = useState(null)
     const [attendanceMap, setAttendanceMap] = useState({})
     const [recentList, setRecentList] = useState([])

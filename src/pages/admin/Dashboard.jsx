@@ -5,7 +5,7 @@ import Sidebar from '../../components/Sidebar'
 import Navbar from '../../components/Navbar'
 import StatCard from '../../components/StatCard'
 import { CardSkeleton } from '../../components/LoadingSkeleton'
-import { useAuth } from '../../context/AuthContext'
+import { useAuth } from '../../hooks/useAuth'
 import { supabase } from '../../lib/supabaseClient'
 
 const STATUS_BADGE = {

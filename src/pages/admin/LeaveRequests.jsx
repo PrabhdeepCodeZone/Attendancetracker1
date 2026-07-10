@@ -2,8 +2,8 @@ import { useState, useEffect, useCallback } from 'react'
 import { X, Loader2, CalendarDays, Home, Clock, CheckCircle, XCircle, Search, Banknote, Ban } from 'lucide-react'
 import Sidebar from '../../components/Sidebar'
 import Navbar from '../../components/Navbar'
-import { toast } from '../../components/Toast'
-import { useAuth } from '../../context/AuthContext'
+import { toast } from '../../lib/toast'
+import { useAuth } from '../../hooks/useAuth'
 import { supabase } from '../../lib/supabaseClient'
 
 const STATUS_CONFIG = {
@@ -75,7 +75,7 @@ export default function LeaveRequests() {
                 .order('created_at', { ascending: false })
             if (error) throw error
             setRequests(data || [])
-        } catch (err) {
+        } catch {
             toast.error('Failed to load requests')
         } finally {
             setLoading(false)

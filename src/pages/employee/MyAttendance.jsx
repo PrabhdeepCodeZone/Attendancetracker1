@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react'
 import Sidebar from '../../components/Sidebar'
 import Navbar from '../../components/Navbar'
 import AttendanceCalendar from '../../components/AttendanceCalendar'
-import { useAuth } from '../../context/AuthContext'
+import { useAuth } from '../../hooks/useAuth'
 import { supabase } from '../../lib/supabaseClient'
 
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
